@@ -1,14 +1,19 @@
 class RecordsController < ApplicationController
 	def index
 		@records = Record.all
-		render :index
 	end
 	def show
-		@record = Record.find(params[:id])
-		render :show
+		p params
+		@record = Record.find(params[:id]) # TODO: handle error
 	end
 	def new
 		@record = Record.new
-		render :new
+	end
+	def create
+		Record.create(record_params)
+		redirect_to('/records')
+	end
+	def record_params
+		params.require(:record).permit(:title, :artitist, :year, :cover_art, :song_count)
 	end
 end

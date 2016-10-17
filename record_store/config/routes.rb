@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 	get "/records", 	to: "records#index", as: 'records'
 	get "/records/new", to: "records#new", 	 as: 'new_record'
 	get "/records/:id", to: "records#show",  as: 'record'
-	
+	post "/records", 	to: "records#create"
 end
