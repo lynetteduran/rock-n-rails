@@ -1,5 +1,10 @@
 class RecordsController < ApplicationController
 	def index
-		render :index # optional
+		@records = Record.all
+		render :index
+	end
+	def show
+		@record = Record.find(params[:id])
+		render :show
 	end
 end
